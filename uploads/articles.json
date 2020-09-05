@@ -1,0 +1,19 @@
+{
+  "articles": [
+    {
+      "title": "Etiam a varius ligula",
+      "image": "https://b2brazil.com/sites/default/files/_brazilian_human_hair.png",
+      "content" : "Nunc consectetur, orci finibus ultricies molestie, diam magna vehicula neque, id vestibulum erat metus vitae eros. Curabitur nulla mauris, pretium ut fermentum sed, ultricies id arcu. Vestibulum placerat maximus ipsum id gravida."
+    },
+    {
+      "title": "Vivamus varius ex ac gravida commodo",
+      "image": "https://b2brazil.com/sites/default/files/native_arts_and_crafts_suppliers-compressed.jpg",
+      "content" : "Fusce laoreet velit auctor ligula finibus bibendum. Nunc vulputate pellentesque tincidunt. Cras non lectus risus. Nulla cursus in eros sed hendrerit. Curabitur auctor porta nibh in aliquet. Nam scelerisque maximus quam sed rhoncus. Aenean nec ornare velit, sit amet lacinia diam."
+    },
+    {
+      "title": "Quisque ut massa pretium",
+      "image": "https://b2brazil.com/sites/default/files/main-banner-min_1.jpg",
+      "content" : "Phasellus scelerisque ac lorem et semper. Aenean tristique, augue a vehicula tincidunt, sem nisi fringilla libero, vitae semper nibh elit a leo. Pellentesque quis fermentum enim. Fusce laoreet velit auctor ligula finibus bibendum. Nunc vulputate pellentesque tincidunt. Cras non lectus risus. Nulla cursus in eros sed hendrerit. Nullam a elit eleifend, semper leo in, efficitur nulla."
+    }
+  ]
+}

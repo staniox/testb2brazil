@@ -1,0 +1,20 @@
+[16252] Log opened at 2020-09-04 02:57:51
+[16252] I: Connecting to configured address/port: localhost:800.
+[16252] E: Time-out connecting to client (Waited: 200 ms). :-(
+[16252] Log closed at 2020-09-04 02:57:51
+
+[20564] Log opened at 2020-09-04 17:42:46
+[20564] I: Connecting to configured address/port: localhost:800.
+[20564] E: Time-out connecting to client (Waited: 200 ms). :-(
+[20564] Log closed at 2020-09-04 17:42:46
+
+[20564] Log opened at 2020-09-04 17:42:56
+[20564] I: Connecting to configured address/port: localhost:800.
+[20564] E: Time-out connecting to client (Waited: 200 ms). :-(
+[20564] Log closed at 2020-09-04 17:42:57
+
+[20564] Log opened at 2020-09-04 17:43:02
+[20564] I: Connecting to configured address/port: localhost:800.
+[20564] E: Time-out connecting to client (Waited: 200 ms). :-(
+[20564] Log closed at 2020-09-04 17:43:03
+
