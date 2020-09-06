@@ -18,7 +18,12 @@ function modificaTitle($request){
 }
 
 function modificaImage($request){
+  $addImg = new AddImg();
+  $setGreyscale= new SetGreyscaleImg();
   $addBorder = new AddBorderImg();
+  $addText = new SetTextCenter();
 
-  return $addBorder->handle($request);
+  $addImg->setNext($setGreyscale)->setNext($addBorder)->setNext($addText);
+
+  return $addImg->handle($request);
 }

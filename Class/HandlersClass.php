@@ -67,17 +67,110 @@ class AddTag extends BaseHandler {
 
 }
 
+class AddImg extends BaseHandler {
+
+    public function handle($request)
+    {
+        $handle = fopen($request, 'rb');
+        $image = new Imagick();
+        $image->readImageFile($handle);
+        $request='../Tmp/'.basename($request);
+        clearstatcache($request);
+        $image->writeImage($request);
+
+
+        if(parent::getNext())
+            return parent::handle($request);
+        return $request;
+    }
+}
+
+class SetGreyscaleImg extends BaseHandler {
+
+    public function handle($request)
+    {
+        $image = new Imagick ($request);
+        $image->setImageType (2);
+        clearstatcache($request);
+        $image->writeImage($request);
+
+        if(parent::getNext())
+            return parent::handle($request);
+        return $request;
+    }
+}
+
 class AddBorderImg extends BaseHandler {
 
   public function handle($request)
   {
+      $imageSource = new Imagick( $request );
 
-    $img = file_get_contents($request);
+      $borderWidth = 10;
+      $borderColor = 'rgba(0, 0, 0, 1)';
+      $borderPadding = 0;
 
-    $image = new Imagick(urlencode($request));
-    $image -> writeImage('imgs/test.png');
+
+      $imageWidth = $imageSource->getImageWidth() + ( 2 * ( $borderWidth + $borderPadding ) );
+      $imageHeight = $imageSource->getImageHeight() + ( 2 * ( $borderWidth + $borderPadding ) );
+
+      $image = new Imagick();
+
+      $image->newImage( $imageWidth, $imageHeight, new ImagickPixel( 'none' )
+      );
+
+      $border = new ImagickDraw();
+
+      $border->setFillColor( 'none' );
+
+      $border->setStrokeColor( new ImagickPixel( $borderColor ) );
+      $border->setStrokeWidth( $borderWidth );
+      $border->setStrokeAntialias( false );
+
+      $border->rectangle(
+          $borderWidth / 2 - 1,
+          $borderWidth / 2 - 1,
+          $imageWidth - ( ($borderWidth / 2) ),
+          $imageHeight - ( ($borderWidth / 2) )
+      );
+
+      $image->drawImage( $border );
+
+      $image->setImageFormat('png');
+
+      $image->compositeImage(
+          $imageSource, Imagick::COMPOSITE_DEFAULT,
+          $borderWidth + $borderPadding,
+          $borderWidth + $borderPadding
+      );
+
+      clearstatcache($request);
+      $image->writeImage($request);
     if(parent::getNext())
       return parent::handle($request);
     return $request;
   }
+}
+
+class SetTextCenter extends BaseHandler {
+    private $text = 'B2Brazil';
+    public function handle($request)
+    {
+        $image = new Imagick($request);
+        $draw = new ImagickDraw();
+
+        $draw->setFillColor('black');
+
+        $draw->setFontSize( 30 );
+        $draw->setGravity(Imagick::GRAVITY_CENTER );
+
+        $image->annotateImage($draw, 0, 0, 0, $this->text);
+
+        clearstatcache($request);
+        $image->writeImage($request);
+
+        if(parent::getNext())
+            return parent::handle($request);
+        return $request;
+    }
 }
