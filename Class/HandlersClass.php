@@ -74,7 +74,7 @@ class AddImg extends BaseHandler {
         $handle = fopen($request, 'rb');
         $image = new Imagick();
         $image->readImageFile($handle);
-        $request='../Tmp/'.basename($request);
+        $request= $GLOBALS['BaseDir'].basename($request);
         clearstatcache($request);
         $image->writeImage($request);
 
@@ -107,7 +107,7 @@ class AddBorderImg extends BaseHandler {
       $imageSource = new Imagick( $request );
 
       $borderWidth = 10;
-      $borderColor = 'rgba(0, 0, 0, 1)';
+      $borderColor = 'rgba(0, 0, 0, 0)';
       $borderPadding = 0;
 
 
@@ -171,6 +171,6 @@ class SetTextCenter extends BaseHandler {
 
         if(parent::getNext())
             return parent::handle($request);
-        return $request;
+        return basename($request);
     }
 }

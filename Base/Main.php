@@ -26,9 +26,11 @@ if($json && $json->articles)
   $article->title=modificaTitle($article->title);
   $article->image=modificaImage($article->image);
   }
+  SaveJson($json);
+  ZipFolder('../Tmp');
 
 
-  echo "O Arquivo ".  basename( $_FILES['up_content']['name']). " foi submetido com sucesso.";
+  echo "O Arquivo ".  basename($_FILES['up_content']['name']). " foi submetido com sucesso.";
 }
 else{
   echo "Ocorreu um erro ao submeter, verifique o formulario e tente novamente.";
