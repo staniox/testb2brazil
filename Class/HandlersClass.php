@@ -45,7 +45,7 @@ class AddTag extends BaseHandler {
   {
     $array = explode(" ",$request);
 
-    $regex = '/^(?:\w+ ){'.($this->wordPositon - 1).'}\K\w+/';
+    $regex = '/^(?:\w+\s+){'.($this->wordPositon-1).'}\K\w+/';
     $replacement = $this->openTag.'$0'.$this->closeTag;
     $request= preg_replace($regex, $replacement, $request,1);
 
@@ -107,7 +107,7 @@ class AddBorderImg extends BaseHandler {
       $imageSource = new Imagick( $request );
 
       $borderWidth = 10;
-      $borderColor = 'rgba(0, 0, 0, 0)';
+      $borderColor = 'rgba(192,192,192)';
       $borderPadding = 0;
 
 

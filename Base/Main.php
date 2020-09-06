@@ -2,9 +2,9 @@
 include_once('Functions.php');
 include_once('LoadAnyJson.php');
 include_once('LoadJson.php');
-include_once('../Class/PropertyClass.php');
+include_once('../Class/handlersFunctions.php');
 
-
+$GLOBALS['BaseDir'] = '../Tmp/';
 $varFile= $_FILES['up_content']['tmp_name'];
 $varUrl = $_POST['up_url'];
 
@@ -27,10 +27,12 @@ if($json && $json->articles)
   $article->image=modificaImage($article->image);
   }
   SaveJson($json);
-  ZipFolder('../Tmp');
+  ZipFolder($GLOBALS['BaseDir']);
+  SendEmail();
+  CleanFolder($GLOBALS['BaseDir']);
 
 
-  echo "O Arquivo ".  basename($_FILES['up_content']['name']). " foi submetido com sucesso.";
+  echo "O Arquivo ".  basename($_FILES['up_content']['name']). " foi submetido com sucesso.Email enviado com sucesso";
 }
 else{
   echo "Ocorreu um erro ao submeter, verifique o formulario e tente novamente.";
